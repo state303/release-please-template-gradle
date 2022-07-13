@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#------------------------------------------------------------------------
+# CREDIT: https://github.com/dwmkerr/java-maven-standard-version-sample
+#------------------------------------------------------------------------
+
 # Create a regex for a conventional commit.
 conventional_commit_regex="^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z \-]+\))?!?: .+$"
 
