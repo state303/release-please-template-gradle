@@ -1,6 +1,6 @@
 {
+  "releaseType": "java",
   "packages": {
-    "releaseType": "java",
     ".": {
       "draft": false,
       "prerelease": false,
