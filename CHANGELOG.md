@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/state303/release-please-template/compare/v1.2.0...v1.3.0) (2022-07-13)
+
+
+### Features
+
+* **script:** adds convenient script for initialization ([4bbb82e](https://github.com/state303/release-please-template/commit/4bbb82eeeb18098e46216bcee0d4c41412edff96))
+
+
+### Bug Fixes
+
+* addresses misguided github_repo properties from the chart ([e08e6ff](https://github.com/state303/release-please-template/commit/e08e6ffe85b56af5f5d4d1e77e554b22eba411e4))
+
 ## [1.2.0](https://github.com/state303/release-please-template/compare/v1.1.0...v1.2.0) (2022-07-13)
 
 
