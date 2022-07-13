@@ -6,23 +6,22 @@ on:
   push:
     branches:
       - main
-      - master
   workflow_dispatch:
 
 jobs:
   release:
     name: Release
-
     runs-on: ubuntu-latest
-
     steps:
       - name: 🙌 Prepare release
         id: release-please
         uses: google-github-actions/release-please-action@v3
         with:
-          command: manifest
-          token: ${{ secrets.GITHUB_TOKEN }}
-
+          release-type: java
+          token: ${{ secrets.ACCESS_TOKEN }}
+          extra-files: ["gradle.properties"]
+          pull-request-title-pattern: "chore${scope}: release${component} v${version}"
+          package-name: "release-please-template"
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
       tag_name: ${{ steps.release-please.outputs.tag_name }}
@@ -50,11 +49,11 @@ jobs:
       - name: 📢 Publish new release
         run: ./gradlew build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: 📦 Upload artifacts
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ needs.release.outputs.tag_name }}
           files: '**/build/libs/*'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
