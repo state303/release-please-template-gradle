@@ -1,0 +1,17 @@
+{
+  "packages": {
+    ".": {
+      "releaseType": "simple",
+      "draft": false,
+      "prerelease": false,
+      "bumpMinorPreMajor": false,
+      "bumpPatchForMinorPreMajor": false,
+      "changelogPath": "CHANGELOG.md",
+      "versioning": "default",
+      "component": "release-please-template",
+      "group-pull-request-title-pattern": "chore: release v${version}",
+      "include-component-in-tag": false,
+      "extra-files": ["gradle.properties"]
+    }
+  }
+}
