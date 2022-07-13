@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/state303/release-please-template/compare/v1.0.0...v1.0.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* changes from java to simple due to issue [#1](https://github.com/state303/release-please-template/issues/1) ([b411f87](https://github.com/state303/release-please-template/commit/b411f87e0c4507835d240958d3a34bfcccfea3a9))
+
 ## 1.0.0 (2022-07-13)
 
 
