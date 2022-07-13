@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/state303/release-please-template/compare/v1.1.0...v1.2.0) (2022-07-13)
+
+
+### Features
+
+* adds commit-msg git hook ([ebbb1c2](https://github.com/state303/release-please-template/commit/ebbb1c2af901352617b99ca2205f7a0f92ca5e3e))
+* **githook:** adds githook script for conventional commit ([0f14925](https://github.com/state303/release-please-template/commit/0f14925aaa60dbb3f23d872d952a536f6efc3c3c))
+
 ## [1.1.0](https://github.com/state303/release-please-template/compare/v1.0.1...v1.1.0) (2022-07-13)
 
 
