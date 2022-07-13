@@ -19,7 +19,8 @@ jobs:
         with:
           release-type: java
           token: ${{ secrets.ACCESS_TOKEN }}
-          extra-files: ["gradle.properties"]
+          extra-files: |
+            "gradle.properties"
           pull-request-title-pattern: "chore${scope}: release${component} v${version}"
           package-name: "release-please-template"
     outputs:
