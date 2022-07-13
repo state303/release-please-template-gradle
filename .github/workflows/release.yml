@@ -17,10 +17,9 @@ jobs:
         id: release-please
         uses: google-github-actions/release-please-action@v3
         with:
-          release-type: java
+          release-type: simple
           token: ${{ secrets.ACCESS_TOKEN }}
-          extra-files: |
-            "gradle.properties"
+          extra-files: "gradle.properties"
           pull-request-title-pattern: "chore${scope}: release${component} v${version}"
           package-name: "release-please-template"
     outputs:
