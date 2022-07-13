@@ -47,13 +47,13 @@ git init
 
 And we need search and replace some properties.
 
-| Path                          | Key               | Value                 | Example     |
-|-------------------------------|-------------------|-----------------------|-------------|
-| settings.gradle               | 	rootProject.name | 	your artifact name   | netty       |
-| gradle.properties             | 	maven_group      | 	your own group       | com.example |
-| gradle.properties             | 	github_repo      | 	your repository name | hello-netty |
-| gradle.properties             | 	artifact_version | 	initial version      | 0.0.0       |
-| .github/workflows/release.yml | 	package-name     | 	package name         | netty       |
+| Path                          | Key               | Value               | Example        |
+|-------------------------------|-------------------|---------------------|----------------|
+| settings.gradle               | 	rootProject.name | 	your artifact name | netty          |
+| gradle.properties             | 	maven_group      | 	your own group     | com.example    |
+| gradle.properties             | 	github_repo      | 	GitHubID/RepoName  | state303/netty |
+| gradle.properties             | 	artifact_version | 	initial version    | 0.0.0          |
+| .github/workflows/release.yml | 	package-name     | 	package name       | netty          |
 
 
 Remove irrelevant java package directory.
