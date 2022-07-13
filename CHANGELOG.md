@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/state303/release-please-template/compare/v1.0.1...v1.1.0) (2022-07-13)
+
+
+### Features
+
+* **codecov:** adds code coverage integration with codecov with coverage.yml ([2195938](https://github.com/state303/release-please-template/commit/21959381e5a5a36968bfebdee259df8979e5bc66))
+
 ## [1.0.1](https://github.com/state303/release-please-template/compare/v1.0.0...v1.0.1) (2022-07-13)
 
 
