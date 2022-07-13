@@ -1,0 +1,93 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'maven-publish'
+}
+
+group project.maven_group
+version project.artifact_version
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${project.junit_jupiter_version}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${project.junit_jupiter_version}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+check {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    finalizedBy jacocoTestCoverageVerification
+}
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
+
+/* JACOCO */
+jacocoTestReport {
+    reports {
+        xml.enabled(true)
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                // minimum = 0.90
+            }
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                // minimum = 0.80
+            }
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                // maximum = 200
+            }
+            excludes = [
+                    // "com.example.somewhere.*"
+            ]
+        }
+    }
+}
+
+//----------------------------------------------------
+// PUBLISH
+//----------------------------------------------------
+publishing {
+    // Declare all publications
+    publications {
+        mavenJava(MavenPublication) { from components.java }
+    }
+
+    // Add repositories to publish to
+    repositories {
+        // GitHub Packages (https://pkg.github.com)
+        maven {
+            name 'GitHub'
+            url "https://maven.pkg.github.com/${project.github_repo}"
+            credentials {
+                username System.getenv('GITHUB_ACTOR')
+                password System.getenv('GITHUB_TOKEN')
+            }
+        }
+    }
+}
