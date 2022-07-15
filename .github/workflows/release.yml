@@ -57,3 +57,9 @@ jobs:
           tag_name: ${{ needs.release.outputs.tag_name }}
           files: '**/build/libs/*'
           token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: 🚀 Publish new package
+        run: ./gradlew publish
+        env:
+          GITHUB_ACTOR: ${{ secrets.REPO_USER }}
+          GITHUB_TOKEN: ${{ secrets.REPO_PASS }}
