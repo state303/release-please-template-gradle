@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.4.0](https://github.com/state303/release-please-template/compare/v1.3.0...v1.4.0) (2022-07-16)
+
+
+### Features
+
+* add generate py script ([6b807fc](https://github.com/state303/release-please-template/commit/6b807fc67b76f35e19be53c673f778e133f9bfb2))
+* adds codecov and publish option ([3ff25b8](https://github.com/state303/release-please-template/commit/3ff25b86ea90dd3fbf0d61eea2782abca7a1b2cf))
+* **publish:** adds gradle publish step ([5a7d116](https://github.com/state303/release-please-template/commit/5a7d116a10ede98df81564d8d1ee1e2431bf4427))
+
+
+### Bug Fixes
+
+* indentation for commented codecov ([391841b](https://github.com/state303/release-please-template/commit/391841b6e9542efe881c2c75f4be17724c9ee278))
+* indentation for commented publish ([cf4ccb6](https://github.com/state303/release-please-template/commit/cf4ccb659bedc39d401fc6ebfd4fd3a1da7193da))
+* malformed check from codecov and publish set ([b7ebaa8](https://github.com/state303/release-please-template/commit/b7ebaa82f2305a17cc7be31b4b685fa46f9fd8be))
+* missing argument for load_config ([d1bb4f0](https://github.com/state303/release-please-template/commit/d1bb4f0a095fb0a62ba731d53d3400e07958ddc5))
+
 ## [1.3.0](https://github.com/state303/release-please-template/compare/v1.2.0...v1.3.0) (2022-07-13)
 
 
