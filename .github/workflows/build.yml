@@ -57,7 +57,7 @@ jobs:
           name: maven
           path: ~/.m2/repository/
 
-      - name: 🎯️ Upload codecov
-        uses: codecov/codecov-action@v3
-        with:
-          files: "**/build/reports/jacoco/test/jacocoTestReport.xml"
+#      - name: 🎯️ Upload codecov
+#        uses: codecov/codecov-action@v3
+#        with:
+#          files: "**/build/reports/jacoco/test/jacocoTestReport.xml"
