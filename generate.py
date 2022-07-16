@@ -27,6 +27,8 @@ reponame_key = "reponame"
 artifact_key = "artifact"
 group_key = "group"
 package_name_key = "package_name"
+codecov_key = "codecov"
+publish_key = "publish"
 
 src_reponame = 'release-please-template'
 git_src_repo = 'https://github.com/state303/release-please-template.git'
@@ -62,6 +64,8 @@ def translate_key(src_key):
         return group_key
     elif src_key in package_param_keys:
         return package_name_key
+    elif src_key == codecov_key or src_key == publish_key:
+        return src_key
     return ""
 
 
@@ -75,7 +79,7 @@ def load_config(filepath):
 
     values = {}
     config_keys = [username_key, reponame_key,
-                   artifact_key, group_key, package_name_key]
+                   artifact_key, group_key, package_name_key, codecov_key, publish_key]
 
     # set found configs into target values
     if found:
@@ -84,7 +88,8 @@ def load_config(filepath):
             for user_defined_key in user_settings:
                 key = translate_key(user_defined_key)
                 if len(key) == 0:  # unknown key
-                    print('unknown key: {}. please try again'.format(user_defined_key))
+                    print('unknown key: {}. please try again'.format(
+                        user_defined_key))
                     sys.exit(2)
                 # mark as config set
                 if key in config_keys:
@@ -95,8 +100,20 @@ def load_config(filepath):
     # fill missing settings with default values
     # if no config was given, missing_configs will have all required fields to be set
     for key in config_keys:
-        values[user_defined_key] = "<YOUR_{}_VALUE>".format(
-            user_defined_key.upper())
+        if key == codecov_key or key == publish_key:
+            values[key] = "false"
+            continue
+        values[key] = "<YOUR_{}_VALUE>".format(key.upper())
+
+    for key in [codecov_key, publish_key]:
+        values[key] = values[key].lower()
+        if values[key] == "1":
+            values[key] = "true"
+        elif values[key] == "0":
+            values[key] = "false"
+        if values[key] != "true" or values[key] != "false":
+            print("only booleans are supported for {}: found {}".format(
+                key, values[key]))
 
     return values
 
@@ -163,7 +180,25 @@ v = 'package-name: ' + values[package_name_key]
 targetPath = os.path.join(repoRootDir, '.github', 'workflows', 'release.yml')
 sed_inline(targetPath, r'package-name.*', v)
 
-# remove previous java packages
+# in case publish is true
+if values[publish_key]:
+    for line in ['#     - name: 🚀 Publish new package',
+                 '#       run: ./gradlew publish',
+                 '#       env:',
+                 '#         GITHUB_ACTOR: ${{ secrets.REPO_USER }}',
+                 '#         GITHUB_TOKEN: ${{ secrets.REPO_PASS }}']:
+        sed_inline(targetPath, r'{}'.format(line), line.replace("#", " "))
+
+targetPath = os.path.join(repoRootDir, '.github', 'workflows', 'build.yml')
+# in case codecov is true
+if values[codecov_key]:
+    for line in ['#     - name: 🎯️ Upload codecov',
+                 '#       uses: codecov/codecov-action@v3',
+                 '#       with:',
+                 '#         files: "**/build/reports/jacoco/test/jacocoTestReport.xml"']:
+        sed_inline(targetPath, r'{}'.replace(line), line.replace("#", " "))
+
+        # remove previous java packages
 shutil.rmtree(os.path.join(repoRootDir, 'src', 'main', 'java', 'io'))
 
 # reset git
