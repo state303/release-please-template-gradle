@@ -106,13 +106,13 @@ def load_config(filepath):
         values[key] = "<YOUR_{}_VALUE>".format(key.upper())
 
     for key in [codecov_key, publish_key]:
-        values[key] = values[key].lower()
-        if values[key] == "1":
-            values[key] = "true"
-        elif values[key] == "0":
-            values[key] = "false"
-        if values[key] != "true" or values[key] != "false":
-            print("only booleans are supported for {}: found {}".format(
+        v = str(values[key]).lower()
+        if v in ['yes', 'y', 't', 'true', '1']:
+            values[key] = True
+        elif v in ['no', 'n', 'f', 'false', '0']:
+            values[key] = False 
+        else:
+            print("unknown value for {}: found {}".format(
                 key, values[key]))
 
     return values
@@ -181,22 +181,21 @@ targetPath = os.path.join(repoRootDir, '.github', 'workflows', 'release.yml')
 sed_inline(targetPath, r'package-name.*', v)
 
 # in case publish is true
-if values[publish_key] == 'true':
+if values[publish_key]:
     for line in ['#     - name: 🚀 Publish new package',
                  '#       run: ./gradlew publish',
                  '#       env:',
-                 '#         GITHUB_ACTOR: ${{ secrets.REPO_USER }}',
-                 '#         GITHUB_TOKEN: ${{ secrets.REPO_PASS }}']:
-        sed_inline(targetPath, r'{}'.format(line), line.replace("#", " "))
+                 '#         GITHUB_']:
+        sed_inline(targetPath, line, line.replace("#", " "))
 
 targetPath = os.path.join(repoRootDir, '.github', 'workflows', 'build.yml')
 # in case codecov is true
-if values[codecov_key] == 'true':
+if values[codecov_key]:
     for line in ['#     - name: 🎯️ Upload codecov',
                  '#       uses: codecov/codecov-action@v3',
                  '#       with:',
-                 '#         files: "**/build/reports/jacoco/test/jacocoTestReport.xml"']:
-        sed_inline(targetPath, r'{}'.replace(line), line.replace("#", " "))
+                 '#         files: ']:
+        sed_inline(targetPath, line, line.replace("#", " "))
 
         # remove previous java packages
 shutil.rmtree(os.path.join(repoRootDir, 'src', 'main', 'java', 'io'))
