@@ -133,10 +133,10 @@ def sed_inline(filepath, pattern, repl):
 # ----------------------
 
 # read flags
-get_config_filepath()
+config_path = get_config_filepath()
 
 # load configs
-values = load_config()
+values = load_config(config_path)
 
 # report values
 print("setting with following values")
