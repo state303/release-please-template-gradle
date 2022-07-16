@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/state303/release-please-template/compare/v1.4.0...v1.4.1) (2022-07-16)
+
+
+### Bug Fixes
+
+* rewrite codecov and publish logic ([7325cde](https://github.com/state303/release-please-template/commit/7325cde7941b3d7d19f879acc7340b192f0a7b6f))
+
 ## [1.4.0](https://github.com/state303/release-please-template/compare/v1.3.0...v1.4.0) (2022-07-16)
 
 
