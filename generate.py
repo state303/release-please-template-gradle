@@ -181,7 +181,7 @@ targetPath = os.path.join(repoRootDir, '.github', 'workflows', 'release.yml')
 sed_inline(targetPath, r'package-name.*', v)
 
 # in case publish is true
-if values[publish_key]:
+if values[publish_key] == 'true':
     for line in ['#     - name: 🚀 Publish new package',
                  '#       run: ./gradlew publish',
                  '#       env:',
@@ -191,7 +191,7 @@ if values[publish_key]:
 
 targetPath = os.path.join(repoRootDir, '.github', 'workflows', 'build.yml')
 # in case codecov is true
-if values[codecov_key]:
+if values[codecov_key] == 'true':
     for line in ['#     - name: 🎯️ Upload codecov',
                  '#       uses: codecov/codecov-action@v3',
                  '#       with:',
