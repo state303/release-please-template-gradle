@@ -49,17 +49,17 @@ jobs:
       - name: 📢 Publish new release
         run: ./gradlew build
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 📦 Upload artifacts
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ needs.release.outputs.tag_name }}
           files: '**/build/libs/*'
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🚀 Publish new package
-        run: ./gradlew publish
-        env:
-          GITHUB_ACTOR: ${{ secrets.REPO_USER }}
-          GITHUB_TOKEN: ${{ secrets.REPO_PASS }}
+  #    - name: 🚀 Publish new package
+  #      run: ./gradlew publish
+  #      env:
+  #        GITHUB_ACTOR: ${{ secrets.REPO_USER }}
+  #        GITHUB_TOKEN: ${{ secrets.REPO_PASS }}
