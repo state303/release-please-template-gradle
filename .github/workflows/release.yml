@@ -58,8 +58,8 @@ jobs:
           files: '**/build/libs/*'
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  #    - name: 🚀 Publish new package
-  #      run: ./gradlew publish
-  #      env:
-  #        GITHUB_ACTOR: ${{ secrets.REPO_USER }}
-  #        GITHUB_TOKEN: ${{ secrets.REPO_PASS }}
+#     - name: 🚀 Publish new package
+#       run: ./gradlew publish
+#       env:
+#         GITHUB_ACTOR: ${{ secrets.REPO_USER }}
+#         GITHUB_TOKEN: ${{ secrets.REPO_PASS }}
