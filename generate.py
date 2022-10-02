@@ -30,7 +30,7 @@ package_name_key = "package_name"
 codecov_key = "codecov"
 publish_key = "publish"
 
-src_reponame = 'release-please-template'
+src_reponame = 'release-please-template-gradle'
 git_src_repo = 'https://github.com/state303/release-please-template-gradle.git'
 
 # ----------------------
