@@ -31,7 +31,7 @@ codecov_key = "codecov"
 publish_key = "publish"
 
 src_reponame = 'release-please-template'
-git_src_repo = 'https://github.com/state303/release-please-template.git'
+git_src_repo = 'https://github.com/state303/release-please-template-gradle.git'
 
 # ----------------------
 # FUNCTIONS
