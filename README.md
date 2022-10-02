@@ -1,4 +1,4 @@
-# Example Template for Gradle Project
+# Example Template for Java, Gradle Project
 
 ---
 
