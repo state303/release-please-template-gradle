@@ -26,7 +26,7 @@ Majority of contents are combined from following sources.
 
 Download generate.py
 ```shell
-curl -LO https://raw.githubusercontent.com/state303/release-please-template/main/generate.py
+curl -LO https://raw.githubusercontent.com/state303/release-please-template-gradle/main/generate.py
 ```
 
 Install dependency 'PyYAML' if you don't have.
