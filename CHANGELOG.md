@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/state303/release-please-template-gradle/compare/v1.4.1...v1.5.0) (2022-10-02)
+
+
+### Features
+
+* updates repo name with gradle suffix ([362d27f](https://github.com/state303/release-please-template-gradle/commit/362d27f9b40089cc2ddfe46ecee339b1face9cdc))
+
 ## [1.4.1](https://github.com/state303/release-please-template/compare/v1.4.0...v1.4.1) (2022-07-16)
 
 
